@@ -19,5 +19,8 @@
   "homepage": "https://github.com/ThiagosLima/api-felicidade#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   }
 }
