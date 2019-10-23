@@ -4,8 +4,15 @@ services:
     build:
       context: .
       target: dev
+      # env_file: .env
     ports:
       - 3000:3000
     volumes:
       - /app/node_modules
       - .:/app
+    depends_on:
+      - mongo
+
+  mongo:
+    image: "mongo"
+    restart: always
