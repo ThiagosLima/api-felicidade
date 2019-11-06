@@ -2,6 +2,7 @@
 # 1) Production environment
 FROM node:12.13.0-alpine as prod
 WORKDIR /app
+RUN apk --no-cache add --virtual builds-deps build-base python
 ENV NODE_ENV=production
 COPY package*.json ./
 # Optimized installation for production
