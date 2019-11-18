@@ -10,6 +10,7 @@ const users = require("./routes/users");
 const feed = require("./routes/feed");
 const auth = require("./routes/auth");
 const habits = require("./routes/habits");
+const agenda = require("./routes/agenda");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use("/api/users", users);
 app.use("/api/feed", feed);
 app.use("/api/auth", auth);
 app.use("/api/habits", habits);
+app.use("/api/agenda", agenda);
 
 // Connect to the database
 mongoose
