@@ -17,6 +17,13 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
+  const { user } = req.query;
+
+  if (user) {
+    const agenda = await Agenda.find({ user });
+    return res.send(agenda);
+  }
+
   const agenda = await Agenda.find();
   return res.send(agenda);
 });
