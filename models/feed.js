@@ -18,6 +18,13 @@ const Feed = mongoose.model('Feed', new mongoose.Schema({
     minlength: 5
     // maxlength: 255
   },
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 5,
+    maxlength: 255
+  },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -31,6 +38,7 @@ function validadeFeed(feed) {
   const schema = {
     // author: Joi.objectId().required(),
     title: Joi.string().min(5).max(255).required(),
+    // name: Joi.string().min(5).max(255).required(),
     description: Joi.string().min(5).required(),
     isAnon: Joi.boolean().required()
   }
