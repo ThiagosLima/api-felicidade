@@ -11,7 +11,7 @@ const { google } = require("googleapis");
 const router = express.Router();
 
 router.get("/me", auth, async (req, res) => {
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user._id).select("-password");
   res.send(user);
 });
 
@@ -25,34 +25,6 @@ router.get("/:id", async (req, res) => {
   } catch (ex) {
     console.log(ex.message);
   }
-});
-
-router.get("/oauth/google", (req, res) => {
-  const oauth2Client = new google.auth.OAuth2(
-    config.get("clientId"),
-    config.get("clientSecret"),
-    "http://localhost:3000/api/users/oauth/google/login"
-  );
-
-  const url = oauth2Client.generateAuthUrl({
-    acces_type: "offline",
-    prompt: "consent",
-    scope: [
-      "https://www.googleapis.com/auth/plus.me",
-      "https://www.googleapis.com/auth/userinfo.email"
-    ]
-  });
-
-  res.send(url);
-});
-
-router.get("/oauth/google/login", (req, res) => {
-  const { tokens } = oauth2Client.getToken(req.body.access_token);
-  console.log(tokens);
-  oauth2Client.setCredentials(tokens);
-  console.log(oauth2Client);
-
-  res.send(oauth2Client);
 });
 
 router.post("/", async (req, res) => {
