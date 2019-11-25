@@ -12,9 +12,9 @@ describe("index", () => {
   });
 
   describe("GET /", () => {
-    it("should return status 200 Ok", async () => {
-      const res = await request(server).get("/");
-      expect(res.status).toBe(200);
-    });
+    // it("should return status 200 Ok", async () => {
+    //   const res = await request(server).get("/");
+    //   expect(res.status).toBe(200);
+    // });
   });
 });
