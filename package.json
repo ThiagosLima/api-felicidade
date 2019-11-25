@@ -21,7 +21,6 @@
   "dependencies": {
     "@hapi/joi": "^15.1.0",
     "bcrypt": "^3.0.6",
-    "codacy-coverage": "^3.4.0",
     "config": "^3.2.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
