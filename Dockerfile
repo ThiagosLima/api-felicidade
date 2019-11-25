@@ -20,4 +20,4 @@ CMD [ "./node_modules/nodemon/bin/nodemon.js", "index.js" ]
 # 3) Test environment
 FROM dev as test
 ENV NODE_ENV=development
-CMD ["npm", "test"]
+CMD ["npm", "test-with-coverage"]
