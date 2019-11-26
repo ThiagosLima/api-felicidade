@@ -7,10 +7,9 @@ before_install:
 
 script:
   - docker-compose -f docker-compose-test.yml run api npm test
-<<<<<<< HEAD
+
+after_script:
   - docker-compose -f docker-compose-test.yml down
-=======
->>>>>>> f14310192008e84375227b51fb4ab71ff2f08ef9
 
 deploy:
   provider: heroku
