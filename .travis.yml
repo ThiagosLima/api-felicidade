@@ -6,7 +6,7 @@ before_install:
   - docker-compose -f docker-compose-test.yml up -d
 
 script:
-  - docker-compose exec api-felicidade_api_1 npm test
+  - docker-compose -f docker-compose-test.yml exec api npm test
 
 after_script:
   - docker-compose down
