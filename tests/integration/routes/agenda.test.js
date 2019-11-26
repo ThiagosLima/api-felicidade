@@ -13,6 +13,7 @@ describe("index", () => {
   afterEach(async () => {
     server.close();
     await Agenda.deleteMany({});
+    await User.deleteMany({});
   });
 
   describe("GET /", () => {
