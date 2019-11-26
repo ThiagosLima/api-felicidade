@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config=./jest.config.js --forceExit",
-    "test-with-coverage": "jest --config=./jest.config.js --detectOpenHandles && cat ./coverage/lcov.info | codacy-coverage"
+    "test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
   },
   "repository": {
     "type": "git",
