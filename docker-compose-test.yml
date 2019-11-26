@@ -19,8 +19,3 @@ services:
     ports:
       - 27017:27017
     restart: always
-
-  seed:
-    build: ./seed
-    depends_on:
-      - mongo
