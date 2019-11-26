@@ -36,7 +36,8 @@ const db = config.get("DB");
 mongoose
   .connect(db, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   })
   .then(console.log(`Connected to the ${db}.`))
   .catch(error => console.log(`Could not connect to the ${db}!`, error));

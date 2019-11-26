@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config=./jest.config.js --watchAll",
+    "test": "jest --config=./jest.config.js --detectOpenHandles",
     "test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage"
   },
   "repository": {
