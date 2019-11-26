@@ -32,13 +32,15 @@ app.use("/api/habits", habits);
 app.use("/api/agenda", agenda);
 
 // Connect to the database
+const db = config.get("DB");
 mongoose
-  .connect("mongodb://mongo:27017/felicidade", {
+  .connect(db, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   })
-  .then("Connected to the database.")
-  .catch(error => console.log("Could not connect to the database!", error));
+  .then(console.log(`Connected to the ${db}.`))
+  .catch(error => console.log(`Could not connect to the ${db}!`, error));
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, console.log(`Listening on port ${PORT}...`));

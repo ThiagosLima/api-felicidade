@@ -3,10 +3,13 @@ services:
   - docker
 
 before_install:
-  - docker build -t api-felicidade:test --target test .
+  - docker-compose -f tests.yml up -d
 
 script:
-  - docker run -e CI=true api-felicidade:test
+  - docker-compose -f tests.yml run api npm test
+
+after_script:
+  - docker-compose down
 
 deploy:
   provider: heroku
