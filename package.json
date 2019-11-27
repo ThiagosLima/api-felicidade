@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config=./jest.config.js --forceExit",
-    "test-with-coverage": "jest --config=./jest.config.js --detectOpenHandles && cat ./coverage/lcov.info | codacy-coverage"
+    "test": "jest --config=./jest.config.js --forceExit --coverageReporters=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -21,7 +20,6 @@
   "dependencies": {
     "@hapi/joi": "^15.1.0",
     "bcrypt": "^3.0.6",
-    "codacy-coverage": "^3.4.0",
     "config": "^3.2.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -32,6 +30,7 @@
     "mongoose": "^5.7.6"
   },
   "devDependencies": {
+    "coveralls": "^3.0.9",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "supertest": "^4.0.2"
