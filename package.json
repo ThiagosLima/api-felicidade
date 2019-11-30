@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config=./jest.config.js --forceExit --coverageReporters=text-lcov | coveralls"
+    "test": "jest --config=./jest.config.js --coverageReporters=text-lcov --forceExit  | coveralls --debug"
   },
   "repository": {
     "type": "git",
