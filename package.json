@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config=./jest.config.js --coverageReporters=text-lcov --forceExit  | coveralls --debug"
+    "test": "jest --config=./jest.config.js --coverageReporters=text-lcov --forceExit  | coveralls --debug",
+    "test-with-coverage": "jest --coverage --forceExit && cat ./coverage/lcov.info | codacy-coverage"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "mongoose": "^5.7.6"
   },
   "devDependencies": {
+    "codacy-coverage": "^3.4.0",
     "coveralls": "^3.0.9",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
