@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config=./jest.config.js --forceExit --coverageReporters=text-lcov | coveralls"
+    "test": "jest --config=./jest.config.js --forceExit",
+    "test-with-coverage": "cat ./coverage/lcov.info | codacy-coverage",
+    "complexity-report": "./node_modules/.bin/es6-plato -r -d ./report src",
+    "codecov": "codecov",
+    "codacy": "codacy-coverage"
   },
   "repository": {
     "type": "git",
@@ -30,7 +34,10 @@
     "mongoose": "^5.7.6"
   },
   "devDependencies": {
+    "codacy-coverage": "^3.4.0",
+    "codecov": "^3.6.1",
     "coveralls": "^3.0.9",
+    "es6-plato": "^1.2.3",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "supertest": "^4.0.2"

@@ -13,6 +13,7 @@ before_install:
 
 script:
   - docker-compose -f tests.yml run api npm test
+  - npm run codecov
 
 after_script:
   - docker-compose down
