@@ -50,7 +50,7 @@ router.put("/:id", auth, async (req, res) => {
   if (!feed)
     return res.status(404).send("The item of the given ID was not found.");
 
-  if (feed.author != req.user._id)
+  if (feed.author !== req.user._id)
     return res.status(403).send("Access Denied.");
 
   feed.title = req.body.title;
@@ -58,17 +58,6 @@ router.put("/:id", auth, async (req, res) => {
   feed.isAnon = req.body.isAnon;
 
   feed = await feed.save();
-
-  /*
-  const feed = await Feed.findByIdAndUpdate(req.params.id,
-    {
-      title: req.body.title,
-      description: req.body.description,
-      isAnon: req.body.isAnon,
-      author: req.body.author,
-      isAuthorized: false
-    }, { new: true })
-  */
 
   res.send(feed);
 });
@@ -84,7 +73,7 @@ router.delete("/:id", auth, async (req, res) => {
     res.send(feed);
   }
 
-  if (!(feed.author == req.user._id))
+  if (!(feed.author === req.user._id))
     return res.status(403).send("Access Denied.");
   feed = await Feed.findByIdAndRemove(req.params.id);
   res.send(feed);

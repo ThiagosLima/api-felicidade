@@ -65,7 +65,7 @@ router.delete("/:id", async (req, res) => {
   const eventId = req.query.eventId;
 
   if (eventId) {
-    const index = agenda.events.findIndex(event => event._id == eventId);
+    const index = agenda.events.findIndex(event => event._id === eventId);
     delete agenda.events[index];
     await agenda.save();
   } else {
