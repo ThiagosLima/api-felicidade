@@ -13,16 +13,12 @@ router.get('/me', auth, async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id)
-    if (!user) {
-      return res.status(404).send('The user with the given ID was not found.')
-    }
-
-    res.send(user)
-  } catch (ex) {
-    console.log(ex.message)
+  const user = await User.findById(req.params.id)
+  if (!user) {
+    return res.status(404).send('The user with the given ID was not found.')
   }
+
+  res.send(user)
 })
 
 router.post('/', async (req, res) => {
@@ -66,12 +62,8 @@ router.put('/:id', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-  try {
-    const users = await User.find()
-    res.send(users)
-  } catch (ex) {
-    console.log(ex.message)
-  }
+  const users = await User.find()
+  res.send(users)
 })
 
 module.exports = router

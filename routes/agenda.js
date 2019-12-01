@@ -3,16 +3,12 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/:id', async (req, res) => {
-  try {
-    const agenda = await Agenda.findById(req.params.id)
-    if (!agenda) {
-      return res.status(404).send('The agenda with the given ID was not found.')
-    }
-
-    res.send(agenda)
-  } catch (error) {
-    console.log(error.message)
+  const agenda = await Agenda.findById(req.params.id)
+  if (!agenda) {
+    return res.status(404).send('The agenda with the given ID was not found.')
   }
+
+  res.send(agenda)
 })
 
 router.get('/', async (req, res) => {

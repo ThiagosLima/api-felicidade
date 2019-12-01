@@ -8,16 +8,12 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  try {
-    const habit = await Habit.findById(req.params.id)
-    if (!habit) {
-      return res.status(404).send('The habit with the given ID was not found.')
-    }
-
-    res.send(habit)
-  } catch (ex) {
-    console.log(ex.message)
+  const habit = await Habit.findById(req.params.id)
+  if (!habit) {
+    return res.status(404).send('The habit with the given ID was not found.')
   }
+
+  res.send(habit)
 })
 
 router.post('/', async (req, res) => {
