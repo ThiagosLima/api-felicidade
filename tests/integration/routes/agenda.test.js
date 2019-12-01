@@ -1,11 +1,10 @@
-// This is a exemple test
 const request = require('supertest')
 const { Agenda } = require('../../../models/agenda')
 const { User } = require('../../../models/user')
 
 let server
 
-describe('index', () => {
+describe('/api/agenda', () => {
   beforeEach(() => {
     server = require('../../../index')
   })
