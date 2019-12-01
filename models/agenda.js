@@ -24,7 +24,7 @@ function validate (agenda) {
     event: Joi.object().keys({
       initialDate: Joi.date(),
       finalDate: Joi.date(),
-      title: Joi.string(),
+      title: Joi.string().required(),
       content: Joi.string()
     })
   }
