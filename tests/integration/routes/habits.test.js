@@ -1,7 +1,6 @@
 const request = require('supertest')
 const mongoose = require('mongoose')
 const { Habit } = require('../../../models/habit')
-// const { User } = require('../../../models/user')
 
 let server
 
