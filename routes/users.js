@@ -4,9 +4,6 @@ const auth = require('../middleware/auth')
 const _ = require('lodash')
 const express = require('express')
 const bcrypt = require('bcrypt')
-const config = require('config')
-
-const { google } = require('googleapis')
 
 const router = express.Router()
 

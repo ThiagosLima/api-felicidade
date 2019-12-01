@@ -47,7 +47,7 @@ router.put('/:id', async (req, res) => {
 
   if (eventId) {
     // The event alread exist
-    const index = agenda.events.findIndex(event => event._id == eventId)
+    const index = agenda.events.findIndex(event => event._id === eventId)
     agenda.events[index] = { _id: eventId, ...req.body.event }
   } else {
     // Is a new event

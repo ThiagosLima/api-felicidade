@@ -1,7 +1,6 @@
 const Joi = require('@hapi/joi')
 Joi.objectId = require('joi-objectid')(Joi)
 const mongoose = require('mongoose')
-const User = require('../models/user')
 
 const Feed = mongoose.model(
   'Feed',
