@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config=./jest.config.js --forceExit",
-    "test-with-coverage": "cat ./coverage/lcov.info | codacy-coverage",
-    "complexity-report": "./node_modules/.bin/es6-plato -r -d ./report src",
-    "codecov": "codecov",
-    "codacy": "codacy-coverage"
+    "test-with-coverage": "jest --config=./jest.config.js --forceExit && cat ./coverage/lcov.info | codacy-coverage"
   },
   "repository": {
     "type": "git",
