@@ -1,8 +1,8 @@
 # Multistage docker for 3 environments
 # 1) Production environment
-FROM node:12.13.0-alpine as prod
+FROM node:12.13.0 as prod
 WORKDIR /app
-RUN apk --no-cache add --virtual builds-deps build-base python
+# RUN apk --no-cache add --virtual builds-deps build-base python
 ENV NODE_ENV=production
 COPY package*.json ./
 # Optimized installation for production
