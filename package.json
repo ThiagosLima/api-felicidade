@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config=./jest.config.js --coverageReporters=text-lcov --forceExit  | coveralls --debug -t COVERALLS_REPO_TOKEN",
-    "test-with-coverage": "jest --coverage --forceExit && cat ./coverage/lcov.info | codacy-coverage --token ${CODACY_PROJECT_TOKEN}",
-    "test:codecov": "jest --config=./jest.config.js --forceExit && codecov %{CODECOV_TOKEN}"
+    "test": "jest --config=./jest.config.js --forceExit",
+    "test-with-coverage": "jest --config=./jest.config.js --forceExit && cat ./coverage/lcov.info | codacy-coverage"
   },
   "repository": {
     "type": "git",
