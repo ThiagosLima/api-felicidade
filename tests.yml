@@ -3,8 +3,9 @@ services:
   api:
     build:
       context: .
-      target: dev
-    env_file: .env
+      target: test
+    environment:
+      - NODE_ENV=test
     ports:
       - 3000:3000
     volumes:
@@ -14,12 +15,7 @@ services:
       - mongo
 
   mongo:
-    image: "mongo:4.2.1"
+    image: "mongo"
     ports:
       - 27017:27017
     restart: always
-
-  seed:
-    build: ./seed
-    depends_on:
-      - mongo

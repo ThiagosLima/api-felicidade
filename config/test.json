@@ -1,0 +1,6 @@
+{
+  "JWT_PRIVATE_KEY": "12345",
+  "CLIENT_ID": "",
+  "CLIENT_SECRET": "",
+  "DB": "mongodb://mongo:27017/felicidade_test"
+}

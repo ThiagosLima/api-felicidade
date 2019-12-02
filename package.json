@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --coverage"
+    "test": "jest --config=./jest.config.js --forceExit",
+    "test-with-coverage": "jest --config=./jest.config.js --forceExit && cat ./coverage/lcov.info | codacy-coverage"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,32 @@
   },
   "homepage": "https://github.com/ThiagosLima/api-felicidade#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@hapi/joi": "^15.1.0",
+    "bcrypt": "^3.0.6",
+    "config": "^3.2.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "googleapis": "^44.0.0",
+    "joi-objectid": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.7.6"
   },
   "devDependencies": {
+    "codacy-coverage": "^3.4.0",
+    "eslint": "^6.7.2",
+    "eslint-config-node": "^4.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "jest": "^24.9.0",
-    "nodemon": "^1.19.2",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.19.1",
     "supertest": "^4.0.2"
   }
 }
