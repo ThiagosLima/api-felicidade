@@ -2,5 +2,5 @@
   "JWT_PRIVATE_KEY": "",
   "CLIENT_ID": "",
   "CLIENT_SECRET": "",
-  "DB": "mongodb://mongo:27017/felicidade"
+  "DB": ""
 }
