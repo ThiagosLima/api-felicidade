@@ -1,5 +1,5 @@
 module.exports = {
   verbose: true,
   collectCoverage: true,
-  testEnvironment: "node"
-};
+  testEnvironment: 'node'
+}

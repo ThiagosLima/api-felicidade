@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
-const Joi = require("@hapi/joi");
+const mongoose = require('mongoose')
+const Joi = require('@hapi/joi')
 
 const agendaSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: 'User'
   },
   events: [
     {
@@ -14,23 +14,23 @@ const agendaSchema = new mongoose.Schema({
       content: String
     }
   ]
-});
+})
 
-const Agenda = mongoose.model("Agenda", agendaSchema);
+const Agenda = mongoose.model('Agenda', agendaSchema)
 
-function validate(agenda) {
+function validate (agenda) {
   const schema = {
     user: Joi.objectId(),
     event: Joi.object().keys({
       initialDate: Joi.date(),
       finalDate: Joi.date(),
-      title: Joi.string(),
+      title: Joi.string().required(),
       content: Joi.string()
     })
-  };
+  }
 
-  return Joi.validate(agenda, schema);
+  return Joi.validate(agenda, schema)
 }
 
-exports.Agenda = Agenda;
-exports.validate = validate;
+exports.Agenda = Agenda
+exports.validate = validate
