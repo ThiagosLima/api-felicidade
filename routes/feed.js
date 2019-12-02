@@ -52,7 +52,7 @@ router.put('/:id', auth, async (req, res) => {
     return res.status(404).send('The item of the given ID was not found.')
   }
 
-  if (feed.author !== req.user._id) {
+  if (feed.author.toString() !== req.user._id.toString()) {
     return res.status(403).send('Access Denied.')
   }
 
@@ -77,9 +77,10 @@ router.delete('/:id', auth, async (req, res) => {
     res.send(feed)
   }
 
-  if (!(feed.author === req.user._id)) {
+  if (feed.author.toString() !== req.user._id.toString()) {
     return res.status(403).send('Access Denied.')
   }
+
   feed = await Feed.findByIdAndRemove(req.params.id)
   res.send(feed)
 })
