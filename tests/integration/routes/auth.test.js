@@ -1,5 +1,4 @@
 const request = require('supertest')
-const mongoose = require('mongoose')
 const { User } = require('../../../models/user')
 
 let server
@@ -19,7 +18,7 @@ describe('/api/auth', () => {
       .send(user)
   }
 
-  beforeEach(async () => {
+  beforeEach(() => {
     server = require('../../../index')
 
     user = {
@@ -62,7 +61,7 @@ describe('/api/auth', () => {
     it('should return 400 if the email has more than 255 chars', async () => {
       await createUser()
 
-      user.email = new Array(256).join('a')
+      user.email = new Array(257).join('a')
 
       const res = await exec()
 
