@@ -41,7 +41,11 @@ router.post('/', validate(validateUser), async (req, res) => {
 })
 
 router.put('/:id', validate(validateUser), async (req, res) => {
-  const { name, email, password } = req.body
+  let { name, email, password } = req.body
+
+  const salt = await bcrypt.genSalt(10)
+  password = await bcrypt.hash(password, salt)
+
   const user = await User.findByIdAndUpdate(
     req.params.id,
     { name, email, password },
@@ -52,7 +56,7 @@ router.put('/:id', validate(validateUser), async (req, res) => {
     return res.status(404).send('The user with the given ID was not found.')
   }
 
-  res.send(user)
+  res.send(_.pick(user, ['_id', 'name', 'email']))
 })
 
 router.get('/', async (req, res) => {
