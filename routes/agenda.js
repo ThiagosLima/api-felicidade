@@ -39,7 +39,7 @@ router.put('/:id', validate(validateAgenda), async (req, res) => {
 
   if (eventId) {
     // The event alread exist
-    const index = agenda.events.findIndex(event => event._id === eventId)
+    const index = agenda.events.map(event => event._id).indexOf(eventId)
     agenda.events[index] = { _id: eventId, ...req.body.event }
   } else {
     // Is a new event
@@ -55,13 +55,18 @@ router.delete('/:id', async (req, res) => {
   const agenda = await Agenda.findById(req.params.id)
   const eventId = req.query.eventId
 
-  if (eventId) {
-    const index = agenda.events.findIndex(event => event._id === eventId)
-    delete agenda.events[index]
-    await agenda.save()
-  } else {
+  if (!eventId) {
+    return res.status(400).send('No event id provided.')
+  }
+
+  const index = agenda.events.map(event => event._id).indexOf(eventId)
+
+  if (index === -1) {
     return res.status(404).send('The event with the given ID was not found.')
   }
+
+  agenda.events.splice(index, 1)
+  await agenda.save()
 
   res.send(agenda)
 })
