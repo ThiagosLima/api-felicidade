@@ -1,5 +1,7 @@
-const { Agenda, validate } = require('../models/agenda')
 const express = require('express')
+const { Agenda, validateAgenda } = require('../models/agenda')
+const validate = require('../middleware/validate')
+
 const router = express.Router()
 
 router.get('/:id', async (req, res) => {
@@ -23,10 +25,7 @@ router.get('/', async (req, res) => {
   return res.send(agenda)
 })
 
-router.post('/', async (req, res) => {
-  const { error } = validate(req.body)
-  if (error) return res.status(400).send(error.details[0].message)
-
+router.post('/', validate(validateAgenda), async (req, res) => {
   const { user } = req.body
   const agenda = new Agenda({ user })
 
@@ -34,10 +33,7 @@ router.post('/', async (req, res) => {
   res.send(agenda)
 })
 
-router.put('/:id', async (req, res) => {
-  const { error } = validate(req.body)
-  if (error) return res.status(400).send(error.details[0].message)
-
+router.put('/:id', validate(validateAgenda), async (req, res) => {
   const agenda = await Agenda.findById(req.params.id)
   const eventId = req.query.eventId
 

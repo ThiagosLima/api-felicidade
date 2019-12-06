@@ -18,7 +18,7 @@ const agendaSchema = new mongoose.Schema({
 
 const Agenda = mongoose.model('Agenda', agendaSchema)
 
-function validate (agenda) {
+function validateAgenda (agenda) {
   const schema = {
     user: Joi.objectId(),
     event: Joi.object().keys({
@@ -33,4 +33,4 @@ function validate (agenda) {
 }
 
 exports.Agenda = Agenda
-exports.validate = validate
+exports.validateAgenda = validateAgenda

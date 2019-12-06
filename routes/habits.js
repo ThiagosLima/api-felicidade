@@ -1,4 +1,5 @@
-const { Habit, validate } = require('../models/habit')
+const { Habit, validateHabit } = require('../models/habit')
+const validate = require('../middleware/validate')
 const express = require('express')
 const router = express.Router()
 
@@ -16,10 +17,7 @@ router.get('/:id', async (req, res) => {
   res.send(habit)
 })
 
-router.post('/', async (req, res) => {
-  const { error } = validate(req.body)
-  if (error) return res.status(400).send(error.details[0].message)
-
+router.post('/', validate(validateHabit), async (req, res) => {
   const { title, content, category } = req.body
   const habit = new Habit({ title, content, category })
 

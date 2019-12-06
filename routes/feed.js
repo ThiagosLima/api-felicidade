@@ -1,8 +1,10 @@
-const { Feed, validate } = require('../models/feed')
+const express = require('express')
+const { Feed, validadeFeed } = require('../models/feed')
 const { User } = require('../models/user')
 const auth = require('../middleware/auth')
 const admin = require('../middleware/admin')
-const express = require('express')
+const validate = require('../middleware/validate')
+
 const router = express.Router()
 
 router.get('/', async (req, res) => {
@@ -22,10 +24,7 @@ router.get('/:id', async (req, res) => {
   res.send(feed)
 })
 
-router.post('/', auth, async (req, res) => {
-  const { error } = validate(req.body)
-  if (error) return res.status(400).send(error.details[0].message)
-
+router.post('/', [auth, validate(validadeFeed)], async (req, res) => {
   const user = await User.findById(req.user._id)
 
   let feed = new Feed({
@@ -41,11 +40,7 @@ router.post('/', auth, async (req, res) => {
   res.send(feed)
 })
 
-router.put('/:id', auth, async (req, res) => {
-  const { error } = validate(req.body)
-
-  if (error) return res.status(400).send(error.details[0].message)
-
+router.put('/:id', [auth, validate(validadeFeed)], async (req, res) => {
   let feed = await Feed.findOne({ _id: req.params.id })
 
   if (!feed) {

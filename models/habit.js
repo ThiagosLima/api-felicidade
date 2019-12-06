@@ -18,7 +18,7 @@ const habitSchema = new mongoose.Schema({
 
 const Habit = mongoose.model('Habit', habitSchema)
 
-function validate (habit) {
+function validateHabit (habit) {
   const schema = {
     title: Joi.string().required(),
     content: Joi.string().required(),
@@ -29,4 +29,4 @@ function validate (habit) {
 }
 
 exports.Habit = Habit
-exports.validate = validate
+exports.validateHabit = validateHabit

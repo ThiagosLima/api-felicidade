@@ -1,9 +1,9 @@
-const Joi = require('@hapi/joi')
-Joi.objectId = require('joi-objectid')(Joi)
-const mongoose = require('mongoose')
+const Joi = require("@hapi/joi")
+Joi.objectId = require("joi-objectid")(Joi)
+const mongoose = require("mongoose")
 
 const Feed = mongoose.model(
-  'Feed',
+  "Feed",
   new mongoose.Schema({
     title: {
       type: String,
@@ -28,7 +28,7 @@ const Feed = mongoose.model(
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true
     },
     isAuthorized: Boolean,
@@ -36,7 +36,7 @@ const Feed = mongoose.model(
   })
 )
 
-function validadeFeed (feed) {
+function validadeFeed(feed) {
   const schema = {
     // author: Joi.objectId().required(),
     title: Joi.string()
@@ -54,4 +54,4 @@ function validadeFeed (feed) {
 }
 
 exports.Feed = Feed
-exports.validate = validadeFeed
+exports.validadeFeed = validadeFeed

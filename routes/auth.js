@@ -1,14 +1,12 @@
 const Joi = require('@hapi/joi')
 const bcrypt = require('bcrypt')
-const { User } = require('../models/user')
-
 const express = require('express')
+const { User } = require('../models/user')
+const validate = require('../middleware/validate')
+
 const router = express.Router()
 
-router.post('/', async (req, res) => {
-  const { error } = validate(req.body)
-  if (error) return res.status(400).send(error.details[0].message)
-
+router.post('/', validate(validateAuth), async (req, res) => {
   const user = await User.findOne({ email: req.body.email })
 
   if (!user) return res.status(400).send('Invalid email or password.')
@@ -20,7 +18,7 @@ router.post('/', async (req, res) => {
   res.send(token)
 })
 
-function validate (req) {
+function validateAuth (req) {
   const schema = {
     email: Joi.string()
       .min(5)
