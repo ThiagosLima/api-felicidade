@@ -54,4 +54,4 @@ function validadeFeed (feed) {
 }
 
 exports.Feed = Feed
-exports.validate = validadeFeed
+exports.validadeFeed = validadeFeed
