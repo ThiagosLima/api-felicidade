@@ -13,8 +13,8 @@ describe('/api/users', () => {
     server = require('../../../index')
 
     user = {
-      name: 'user1',
-      email: 'user1@mail.com',
+      name: 'user4',
+      email: 'user4@mail.com',
       password: '12345'
     }
   })
@@ -32,7 +32,7 @@ describe('/api/users', () => {
 
       expect(res.status).toBe(200)
       expect(res.body.length).toBe(1)
-      expect(res.body.some(user => user.name === 'user1')).toBeTruthy()
+      expect(res.body.some(user => user.name === 'user4')).toBeTruthy()
     })
   })
 
