@@ -183,11 +183,20 @@ describe('/api/feed', () => {
       await Feed.deleteMany({})
       await User.deleteMany({})
     })
+
     it('should return the updated feed if it is valid', async () => {
       const res = await execPut()
 
       expect(res.status).toBe(200)
       expect(res.body).toMatchObject(newFeed)
+    })
+
+    it('should return 403 if the user is not the author', async () => {
+      token = new User().generateAuthToken()
+
+      const res = await execPut()
+
+      expect(res.status).toBe(403)
     })
 
     it('should save the updated feed if it is valid', async () => {
