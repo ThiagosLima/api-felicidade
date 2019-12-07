@@ -55,11 +55,7 @@ describe('/api/users', () => {
 
   describe('GET /:id', () => {
     beforeEach(async () => {
-      const { ops: users } = await User.collection.insertOne({
-        name: 'user1',
-        email: 'user1@mail.com',
-        password: '12345'
-      })
+      const { ops: users } = await User.collection.insertOne(user)
 
       user = users[0]
     })
