@@ -10,6 +10,5 @@ jobs:
      - name: Rise up the container
        run: docker-compose -f tests.yml up -d --build
      - name: Run the tests
-       run: docker-compose -f tests.yml run api npm run test
-     - name: Close the container
-       run: docker-compose down
+       run: docker-compose -f tests.yml run -e CODACY_PROJECT_TOKEN=$CODACY_PROJECT_TOKEN api npm run test-with-coverage
+
