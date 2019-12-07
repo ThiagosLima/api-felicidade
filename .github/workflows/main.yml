@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test:
-   runs-on: ubuntu-latest
+   runs-on: ${{ matrix.platform }}
    steps:
      - uses: actions/checkout@v1
      - name: Rise up the container
