@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker-compose -f tests.yml up -d
+  - docker-compose -f tests.yml up -d --build
 
 script:
   - docker-compose -f tests.yml run -e CODACY_PROJECT_TOKEN=$CODACY_PROJECT_TOKEN api npm run test-with-coverage

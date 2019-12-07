@@ -179,11 +179,6 @@ describe('/api/feed', () => {
       }
     })
 
-    afterEach(async () => {
-      await Feed.deleteMany({})
-      await User.deleteMany({})
-    })
-
     it('should return the updated feed if it is valid', async () => {
       const res = await execPut()
 
