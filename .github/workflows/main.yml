@@ -4,7 +4,12 @@ on: [push]
 
 jobs:
   test:
-   runs-on: ${{ matrix.platform }}
+   runs-on: ${{ matrix.os }}
+   strategy:
+    matrix:
+      node_version: ['8', '10', '12']
+      os: [ubuntu-latest, windows-latest, macOS-latest]
+   
    steps:
      - uses: actions/checkout@v1
      - name: Rise up the container
